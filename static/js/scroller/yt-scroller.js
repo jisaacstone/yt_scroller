@@ -207,8 +207,8 @@ function stateChange(newState) {
                 $(this).click(function(){
                     curTime = $(this).data('time');
                     ytplayer.seekTo(curTime);
+                    ytplayer.pauseVideo();
                     ytplayer.playVideo();
-                    ytplay();
                 });
         	});
         	var last = oContent.obj.children(':last-child');
