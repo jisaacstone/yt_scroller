@@ -28,7 +28,7 @@ html, body{
     vertical-align: middle;
 }
 
-#anno-video-scroller{
+#video-scroller{
     overflow: hidden;
     padding: 0;
     width: 520px;
@@ -47,36 +47,36 @@ html, body{
     padding: 0;
     display: inline-block;
 }
-#anno-video-scroller .viewport {
+#video-scroller .viewport {
     height: 100%;
     overflow: hidden;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 100, 255, 0.3) inset;
 }
-#anno-video-scroller .overview {
+#video-scroller .overview {
     list-style: none;
     position: absolute;
     left: 20px;
     right: 20px;
     top: 0;
 }
-#anno-video-scroller .thumb .end,
-#anno-video-scroller .thumb {
+#video-scroller .thumb .end,
+#video-scroller .thumb {
     background-color: #003D5D;
 }
-#anno-video-scroller .scrollbar {
+#video-scroller .scrollbar {
     position: relative;
     float: right;
     width: 15px;
 }
-#anno-video-scroller .track {
+#video-scroller .track {
     background-color: #D8EEFD;
     height: 100%;
     width:13px;
     position: relative;
     padding: 0 1px;
 }
-#anno-video-scroller .thumb {
+#video-scroller .thumb {
     height: 20px;
     width: 13px;
     cursor: pointer;
@@ -84,16 +84,31 @@ html, body{
     position: absolute;
     top: 0;
 }
-#anno-video-scroller .thumb .end {
+#video-scroller .thumb .end {
     overflow: hidden;
     height: 5px;
     width: 13px;
 }
-#anno-video-scroller .disable{
+#video-scroller .disable{
     display: none;
 }
 
-#anno-video-scroller .math{
+#video-scroller .math{
     font-family: monospace;
     background-color: rgba(255,155,0,0.1);
+}
+
+.timestop{
+    font-size: 8px;
+    line-height: 8px;
+    display: inline-block;
+    cursor: pointer;
+    width: 1.1em;
+    height: 1em;
+    border: 1px solid black;
+    margin: 0 0.5em;
+    border-radius: 2px;
+    background-color: rgba(100,100,1,0.2);
+    text-shadow: 0 1px 0 rgba(1,1,1,0.5), 0 -1px 0 rgba(255,255,255,0.5);
+    box-shadow: 1px 1px 1px rgba(1,1,1,0.5), -1px -1px 1px rgba(255,255,255,0.5) inset;
 }

@@ -13,20 +13,18 @@
  *
  * Heavily modified by J Isaac Stone for integration with the youtube player
  * Date: 28 / 12 / 2011
+ * apologies that I was too lazy to figure out object inheritence & just added the methods to this class
  * 
  */
 
 function onYouTubePlayerReady(playerId) {
   	ytplayer = document.getElementById(playerId);
-	$('#anno-video-scroller').tinyscrollbar();
+	$('#video-scroller').tinyscrollbar();
 	ytplayer.addEventListener("onStateChange", "stateChange");
 }
 function stateChange(newState) {
-    $('#anno-video-scroller').playerStateChange(newState)
+    $('#video-scroller').playerStateChange(newState)
 }
-$(document).ready(function(){
-	//$('#anno-video-scroller').tinyscrollbar();
-});
 
 (function($){
 	$.tiny = $.tiny || { };
@@ -96,7 +94,7 @@ $(document).ready(function(){
                 return ytplay();
             }
             if (newState === 2) {
-		stop_scroll();
+		        stop_scroll();
                 return setCurTime();
             }
         };
@@ -205,6 +203,13 @@ $(document).ready(function(){
                     time += timeArray.pop();
                 }
           		steps[time] = $(el).position().top + curScrPos;
+                $(this).data('time', time);
+                $(this).click(function(){
+                    curTime = $(this).data('time');
+                    ytplayer.seekTo(curTime);
+                    ytplayer.playVideo();
+                    ytplay();
+                });
         	});
         	var last = oContent.obj.children(':last-child');
         	steps[duration] = last.position().top + curScrPos;
