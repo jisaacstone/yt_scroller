@@ -1,0 +1,99 @@
+html, body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    line-height: 20%;
+    background-color: #252F3C;
+}
+.header{
+    width: 100%;
+    text-align: center;
+}
+.header h1{
+    font-size: 4em;
+    line-height: 1em;
+    font-weight: 500;
+    color: #85B399;
+    text-shadow: 0 -1px 0 rgba(200,255,210,0.5);
+}
+
+.content-wrapper{
+    display: block;
+    text-align: center;
+    padding:0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#anno-video-scroller{
+    overflow: hidden;
+    padding: 0;
+    width: 520px;
+    height: 360px;
+    position: relative;
+    line-height: 1.5em;
+    background-color: #FFEFD6;
+}
+#video-box{
+    width: 640px;
+    height: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.box{
+    padding: 0;
+    display: inline-block;
+}
+#anno-video-scroller .viewport {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 100, 255, 0.3) inset;
+}
+#anno-video-scroller .overview {
+    list-style: none;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 0;
+}
+#anno-video-scroller .thumb .end,
+#anno-video-scroller .thumb {
+    background-color: #003D5D;
+}
+#anno-video-scroller .scrollbar {
+    position: relative;
+    float: right;
+    width: 15px;
+}
+#anno-video-scroller .track {
+    background-color: #D8EEFD;
+    height: 100%;
+    width:13px;
+    position: relative;
+    padding: 0 1px;
+}
+#anno-video-scroller .thumb {
+    height: 20px;
+    width: 13px;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+}
+#anno-video-scroller .thumb .end {
+    overflow: hidden;
+    height: 5px;
+    width: 13px;
+}
+#anno-video-scroller .disable{
+    display: none;
+}
+
+#anno-video-scroller .math{
+    font-family: monospace;
+    background-color: rgba(255,155,0,0.1);
+}
