@@ -5,7 +5,7 @@ class VidInfo(models.Model):
     vid_id = models.CharField(max_length=200)
 
     def __uicode__(self):
-        return self.name if self.name else self.vid_id
+        return self.name
 
 class Timestop(models.Model):
     vid = models.ForeignKey(VidInfo)
