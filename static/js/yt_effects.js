@@ -1,8 +1,8 @@
 $(function() {
-    $('.timestop').css('visibility','hidden');
-    $('.timestop').parent().hover(function(){
-        $(this).children('.timestop').css('visibility', 'visible');
+    $('.hover').css('visibility','hidden');
+    $('.hover').parent().hover(function(){
+        $(this).children('.hover').css('visibility', 'visible');
         }, function(){
-        $(this).children('.timestop').css('visibility', 'hidden');
+        $(this).children('.hover').css('visibility', 'hidden');
     });
 });

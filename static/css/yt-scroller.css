@@ -98,7 +98,7 @@ html, body{
     background-color: rgba(255,155,0,0.1);
 }
 
-.timestop{
+.hover{
     font-size: 8px;
     line-height: 8px;
     display: inline-block;
@@ -108,7 +108,29 @@ html, body{
     border: 1px solid black;
     margin: 0 0.5em;
     border-radius: 2px;
-    background-color: rgba(180,80,1,0.8);
     text-shadow: 0 1px 0 rgba(1,1,1,0.5), 0 -1px 0 rgba(255,155,155,0.5);
     box-shadow: 1px 1px 1px rgba(1,1,1,0.5), 1px 1px 1px rgba(255,155,155,0.5) inset;
+}
+.timestop{
+    background-color: rgba(180,80,1,0.8);
+}
+.ts-edit{
+    background-color: rgba(80,180,1,0.8);
+    position: relative;
+}   
+.edbox{
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(244,255,254,0.4);
+    z-index: 2;
+    font-size: 12pt;
+    padding: 5px;
+    border: 2px solid rgba(0,111,12,0.6);
+    border-radius: 8px;
+}    
+
+.edbox input{
+    width: 3em;
 }

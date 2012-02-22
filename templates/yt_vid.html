@@ -4,6 +4,7 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="/static/js/swfobject.js"></script>    
   <script type="text/javascript" src="/static/js/yt_effects.js"></script>    
+  <script type="text/javascript" src="/static/js/yt_edit.js"></script>    
   <script type="text/javascript" src="/static/js/scroller/yt-scroller.js"></script>    
   <script type="text/javascript">
     var params = { allowScriptAccess: "always" };
@@ -33,11 +34,23 @@
   </div><div id="video-scroller" class="box">
   <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 	<div class="viewport">
-		<div class="overview">
-          {% for timestop in timestops %}
+      <div class="overview">
+        {% for timestop in timestops %}
           <p>
-          <span class="timestop" data-time="{{ timestop.time }}">&#x25B8;</span>{{ timestop.html }}
-          {% endfor %}
+          {% if timestop.time %}
+            <span class="hover timestop" data-time="{{ timestop.time }}">&#x25B8;</span>
+          {% endif %}
+          {{ timestop.html }}
+          {% if edit %}
+            <span class="hover ts-edit" data-url="/yt_scroller/ajax/update_time/{{ vid.id }}/{{ timestop.id }}">&#x2714;
+              <span class="edbox">
+                <input type="text" maxlength="5" width="4"  value="{{ timestop.time }}"</input>
+                <span class="submit ebutton">&#x2714;</span>
+                <span class="close ebutton">&#x2716;</span>
+              </span>
+            </span>
+          {% endif %}  
+        {% endfor %}
       </div>
 	</div>
   </div>
