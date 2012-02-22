@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<head>
+  <title>{{ vid.name }}</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/swfobject.js"></script>    
+  <script type="text/javascript" src="/static/js/yt_effects.js"></script>    
+  <script type="text/javascript" src="/static/js/scroller/yt-scroller.js"></script>    
+  <script type="text/javascript">
+    var params = { allowScriptAccess: "always" };
+    var atts = { id: "video" };
+    swfobject.embedSWF("http://www.youtube.com/v/{{ vid.vid_id }}?enablejsapi=1&playerapiid=video&version=3",
+                       "video", 
+                       "640",
+                       "360",
+                       "8", 
+                       null, 
+                       null, 
+                       params, 
+                       atts);
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="/static/css/yt-scroller.css" />
+</head>
+<body>
+<div class="header">
+    <h1>{{ vid.name }}</h1>
+</div>
+<div class="content-wrapper">
+  <div class="box" id="video-box">
+      <div id="video">
+        You need Flash player 8+ and JavaScript enabled to view this video.
+      </div>
+  </div><div id="video-scroller" class="box">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	<div class="viewport">
+		<div class="overview">
+          {% for timestop in timestops %}
+          <p>
+          <span class="timestop" data-time="{{ timestop.time }}">&#x25B8;</span>{{ timestop.html }}
+          {% endfor %}
+      </div>
+	</div>
+  </div>
+</div>
+</body>
