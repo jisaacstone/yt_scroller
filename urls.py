@@ -4,5 +4,6 @@ urlpatterns = patterns('yt_scroller.views',
     url(r'^$', 'index'),
     url(r'^vid/(?P<vid_string>\w+)/?$', 'show'), 
     url(r'^ajax/update_time/(?P<vid_id>\d+)/(?P<timestop_id>\d+)/?', 'update'),
+    url(r'^ajax/new_vide/?$','new_video'),
 )
 

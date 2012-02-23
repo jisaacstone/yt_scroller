@@ -155,6 +155,12 @@ html, body{
     background-color: rgba(45,200,12,0.1);
     color: rgba(0,78,0,0.6);
 }
+p.addnew{
+    cursor: pointer;
+    background-color: rgba(45,200,12,0.1);
+    color: rgba(0,78,0,0.6);
+    border-radius: 0.5em;
+}
 .messagebox{
     display: none;
     position: absolute;

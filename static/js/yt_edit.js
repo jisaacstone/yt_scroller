@@ -1,16 +1,17 @@
 $(function(){
+    // lyrics editing js
     $('.ts-edit').click(function(){
         if($(this).children('.edbox').is(':hidden')){
             $(this).children('.edbox').css('display','block');
         }
     });
-    $('.addnew').click(function(){
+    $('.controls .addnew').click(function(){
         $('.overview p:first').clone(true)
             .children('.textcontent').html('edit this text')
             .siblings('.timestop').data('time','0')
             .parent().insertAfter('.overview div:first');
     });
-    $('.remove').click(function(){
+    $('.controls .remove').click(function(){
         $('.textcontent').click(function(){
             $.ajax({
                 type: 'DELETE',
@@ -27,8 +28,8 @@ $(function(){
     });
     $('p .edbox .submit').click(function(e){
         e.stopPropagation();
-        time = $(this).siblings('input').val();
-        html = $(this).parents('p').children('.textcontent').html();
+        var time = $(this).siblings('input').val();
+        var html = $(this).parents('p').children('.textcontent').html();
         $.ajax({
             type: 'POST',
             url: $(this).parents('.ts-edit').data('url'),
@@ -46,5 +47,28 @@ $(function(){
         }, function(){
         $(this).children('.hover').css('visibility', 'hidden')
             .children('.edbox').css('display', 'none');
+    });
+    // video editing js
+    $('p.addnew').click(function(){
+        $(this).clone().html('' +
+            '<div><label for="name"> Video Name: </label>' + 
+            '<input type="text" id="name" name="name"></input></div>' +
+            '<div><label for="vid_id"> YouTube Id: </label>' + 
+            '<input type="text" id="vid_id" name="vid_id"></input></div>' +
+            '<input type="submit" class="new_video" value="+"></input>'
+        ).insertBefore($(this))
+        .children('.new_video').click(function(){
+            var vid_id = $(this).siblings().children('#vid_id').val();
+            var vid_name = $(this).siblings().children('#name').val();
+            $.ajax({
+                type: 'POST',
+                url: '/yt_player/ajax/new_video/',
+                data: {
+                    vid_id: vid_id,
+                    name: vid_name
+                }
+            });
+            $(this).parents('.addnew').replaceWith('<p><a href="'+vid_id+'">'+vid_name+'</a>');
+        });
     });
 });

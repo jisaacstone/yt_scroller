@@ -33,3 +33,12 @@ def update(HttpRequest, vid_id, timestop_id):
     elif method == 'DELETE':
         ts.delete()
         return HttpResponse(status='204')
+
+def new_video(HttpRequest):
+    title = HttpRequest.POST.get('name', None)
+    vid_id = HttpRequest.POST.get('vid_id', None);
+    if not title or not vid_id:
+        return HttpResponse(status="400")
+    v = VidInfo(name=title, vid_id=vid_id)
+    v.save()
+    return HttpRespons(status="204")
