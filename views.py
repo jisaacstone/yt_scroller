@@ -17,14 +17,19 @@ def show(HttpRequest, vid_string):
     return render_to_response('yt_vid.html', locals())
 
 def update(HttpRequest, vid_id, timestop_id):
-    html = HttpRequest.POST.get('html', None)
-    time = HttpRequest.POST.get('time', None)
-    if time is None and html is None:
-        return HttpResponse(status="400") 
     ts = get_object_or_404(Timestop, pk=timestop_id, vid=vid_id)
-    if time:
-        ts.time = time
-    if html:    
-        ts.html = html
-    ts.save()
-    return HttpResponse(status='204')
+    method = HttpRequest.META['REQUEST_METHOD']
+    if method == 'POST':
+        html = HttpRequest.POST.get('html', None)
+        time = HttpRequest.POST.get('time', None)
+        if time is None and html is None:
+            return HttpResponse(status="400") 
+        if time:
+            ts.time = time
+        if html:    
+            ts.html = html
+        ts.save()
+        return HttpResponse(status='204')
+    elif method == 'DELETE':
+        ts.delete()
+        return HttpResponse(status='204')

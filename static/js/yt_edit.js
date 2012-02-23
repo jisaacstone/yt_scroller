@@ -16,6 +16,7 @@ $(function(){
                 type: 'DELETE',
                 url: $(this).siblings('.ts-edit').data('url'),
             });
+            $(this).parents('p').remove();
         });
         $('.messagebox').css('display', 'block');
         $('.messagebox .message').html('Click on Text to Remove');
