@@ -4,7 +4,6 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="/static/js/swfobject.js"></script>    
   <script type="text/javascript" src="/static/js/djangoajax.js"></script>    
-  <script type="text/javascript" src="/static/js/yt_effects.js"></script>    
   <script type="text/javascript" src="/static/js/yt_edit.js"></script>    
   <script type="text/javascript" src="/static/js/scroller/yt-scroller.js"></script>    
   <script type="text/javascript">
@@ -35,6 +34,13 @@
   </div><div id="video-scroller" class="box">
   <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 	<div class="viewport">
+    {% if edit %}
+    <div class="controls">
+    <span class="addnew">+</span>
+    <span class="remove">-</span>
+    </div>
+    <span class="messagebox"><span class="message"></span><span class="close">&#x2716;</span></span>
+    {% endif %}
       <div class="overview">
         {% for timestop in timestops %}
           <p>
