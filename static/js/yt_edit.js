@@ -5,13 +5,13 @@ $(function(){
             $(this).children('.edbox').css('display','block');
         }
     });
-    $('.controls .addnew').click(function(){
+    $('.v-scroll .controls .addnew').click(function(){
         $('.overview p:first').clone(true)
             .children('.textcontent').html('edit this text')
             .siblings('.timestop').data('time','0')
             .parent().insertAfter('.overview div:first');
     });
-    $('.controls .remove').click(function(){
+    $('.v-scroll .controls .remove').click(function(){
         $('.textcontent').click(function(){
             $.ajax({
                 type: 'DELETE',
@@ -26,7 +26,7 @@ $(function(){
             $('.messagebox').css('display', 'none');
         });
     });
-    $('p .edbox .submit').click(function(e){
+    $('.v-scroll p .edbox .submit').click(function(e){
         e.stopPropagation();
         var time = $(this).siblings('input').val();
         var html = $(this).parents('p').children('.textcontent').html();
@@ -49,21 +49,36 @@ $(function(){
             .children('.edbox').css('display', 'none');
     });
     // video editing js
-    $('p.addnew').click(function(){
-        $(this).clone().html('' +
+    $('.v-list .controls .remove').click(function(){
+        $('.vid-listing').click(function(){
+            $.ajax({
+                type: 'DELETE',
+                url: '/yt_scroller/ajax/update/'+$(this).children('a').attr('href')+'/',
+            });
+            $(this).remove();
+        });
+        $('.messagebox').css('display', 'block');
+        $('.messagebox .message').html('Click on Listing to Remove');
+        $('.messagebox .close').click(function(){
+            $('.vid-listing').unbind('click');
+            $('.messagebox').css('display', 'none');
+        });
+    });
+    $('.v-list .addnew').click(function(){
+        $('.addnew:last').clone().html('' +
             '<div><label for="name"> Video Name: </label>' + 
             '<input type="text" id="name" name="name"></input></div>' +
             '<div><label for="vid_id"> YouTube Id: </label>' + 
             '<input type="text" id="vid_id" name="vid_id"></input></div>' +
             '<input type="submit" class="new_video" value="+"></input>'
-        ).insertBefore($(this))
+        ).insertBefore($('.addnew:last'))
         .children('.new_video').click(function(){
             var vid_id = $(this).siblings().children('#vid_id').val();
             var vid_name = $(this).siblings().children('#name').val();
             $.ajax({
                 type: 'POST',
-                url: '/yt_player/ajax/new_video/',
-                data: {
+                url: '/yt_scroller/ajax/new_video/',
+                stdata: {
                     vid_id: vid_id,
                     name: vid_name
                 }

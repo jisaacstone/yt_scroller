@@ -31,21 +31,22 @@
       <div id="video">
         You need Flash player 8+ and JavaScript enabled to view this video.
       </div>
-  </div><div id="video-scroller" class="box">
+  </div>
+  <div id="video-scroller" class="box v-scroll">
   <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 	<div class="viewport">
-    {% if edit %}
-    <div class="controls">
-    <span class="addnew">+</span>
-    <span class="remove">-</span>
-    </div>
-    <span class="messagebox"><span class="message"></span><span class="close">&#x2716;</span></span>
-    {% endif %}
+        {% if edit %}
+        <div class="controls">
+            <span class="addnew">+</span>
+            <span class="remove">-</span>
+        </div>
+        <span class="messagebox"><span class="message"></span><span class="close">&#x2716;</span></span>
+        {% endif %}
       <div class="overview">
         {% for timestop in timestops %}
           <p>
           {% if timestop.time %}
-            <span class="hover timestop" data-time="{{ timestop.time }}">&#x25B8;</span>
+          <span class="hover timestop" data-time="{{ timestop.time }}">&#x25B8;</span>
           {% endif %}
           <span class="textcontent" contenteditable="true">{{ timestop.html }}</span>
           {% if edit %}

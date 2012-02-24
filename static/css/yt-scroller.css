@@ -131,8 +131,11 @@ html, body{
     border-radius: 8px;
 }    
 
-.edbox input{
+.v-scroll .edbox input{
     width: 3em;
+}
+.v-list .edbox input{
+    width: 9em;
 }
 .controls{
     cursor: pointer;
