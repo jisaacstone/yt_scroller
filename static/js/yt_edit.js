@@ -5,11 +5,11 @@ $(function(){
             $(this).children('.edbox').css('display','block');
         }
     });
-    $('.v-scroll .controls .addnew').click(function(){
+    $('.v-scroll .addnew').click(function(){
         $('.overview p:first').clone(true)
             .children('.textcontent').html('edit this text')
             .siblings('.timestop').data('time','0')
-            .parent().insertAfter('.overview div:first');
+            .parent().insertBefore('.overview p:last');
     });
     $('.v-scroll .controls .remove').click(function(){
         $('.textcontent').click(function(){
@@ -78,7 +78,7 @@ $(function(){
             $.ajax({
                 type: 'POST',
                 url: '/yt_scroller/ajax/new_video/',
-                stdata: {
+                data: {
                     vid_id: vid_id,
                     name: vid_name
                 }
