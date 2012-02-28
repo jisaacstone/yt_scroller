@@ -17,7 +17,10 @@ def show(HttpRequest, vid_string):
     return render_to_response('yt_vid.html', locals())
 
 def update(HttpRequest, vid_id, timestop_id):
-    ts = get_object_or_404(Timestop, pk=timestop_id, vid=vid_id)
+    if timestop_id != '0':
+        ts = get_object_or_404(Timestop, pk=timestop_id, vid=vid_id)
+    else:
+        ts = get_object_or_404(VidInfo, pk=vid_id).timestop_set.create(time=0, html="")
     method = HttpRequest.META['REQUEST_METHOD']
     if method == 'POST':
         html = HttpRequest.POST.get('html', None)

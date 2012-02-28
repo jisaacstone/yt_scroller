@@ -9,6 +9,7 @@ $(function(){
         $('.overview p:first').clone(true)
             .children('.textcontent').html('edit this text')
             .siblings('.timestop').data('time','0')
+            .siblings('.ts-edit').data('url', $('.ts-edit:first').data('url').replace(/[0-9]+\/$/i,'0/'))
             .parent().insertBefore('.overview p:last');
     });
     $('.v-scroll .controls .remove').click(function(){
