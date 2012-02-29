@@ -181,3 +181,14 @@ p.addnew{
 .messagebox .message{
     padding: 0 3px;
 }
+.vid-listing{
+    background-color: rgba(200, 178, 100, 0.102);
+    border-radius: 0.5em;
+}
+.vid-listing a{
+    text-decoration: none;
+    color: rgba(28,58,128,0.7);
+}
+.vid-listing a:hover{
+    color: rgba(28,58,128,1);
+}
