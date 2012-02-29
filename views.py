@@ -42,15 +42,14 @@ def update(HttpRequest, vid_id, timestop_id):
 def update_vid(HttpRequest, vid_id):
     method = HttpRequest.META['REQUEST_METHOD']
     if method == 'POST':
-        title = HttpRequest.POST.get('name', None)
-        vid_id = HttpRequest.POST.get('vid_id', None);
+        title = HttpRequest.POST.get('title', None)
         if not title or not vid_id:
             return HttpResponse(status="400")
-        v = VidInfo(name=title, vid_id=vid_id)
+        v = VidInfo(name=title, pk=vid_id)
         v.save()
         return HttpResponse(status="201")
     elif method == 'DELETE':
-        vid = get_object_or_404(VidInfo, vid_id=vid_id)
+        vid = get_object_or_404(VidInfo, pk=vid_id)
         vid.delete()
         return HttpResponse(status='204')
 

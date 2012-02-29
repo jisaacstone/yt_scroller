@@ -33,12 +33,11 @@
         {% endif %}
 		<div class="overview">
           {% for vid in vids %}
-          <p class="vid-listing">
-            <a href="{{ vid.vid_id }}">{{ vid.name }}</a>
+          <p class="vid-listing" data-vid="{{ vid.id }}">
+            <a class="textcontent" href="{{ vid.vid_id }}">{{ vid.name }}</a>
             {% if edit %}
             <span class="hover ts-edit" data-url="/yt_scroller/ajax/update_time/{{ vid.id }}/{{ timestop.id }}/">&#x2714;
               <span class="edbox">
-                <input type="text" maxlength="15" width="9"  value="{{ timestop.time }}"</input>
                 <span class="submit ebutton">&#x2714;</span>
                 <span class="close ebutton">&#x2716;</span>
               </span>

@@ -55,11 +55,22 @@ $(function(){
         $(this).children('.hover').css('visibility', 'hidden');
     });
     // video editing js
+    $('.v-list p .edbox .submit').click(function(e){
+        e.stopPropagation();
+        var title = $(this).parents('p').children('.tcinput').val();
+        $(this).parents('p').children('.textcontent').html(title);
+        $.ajax({
+            type: 'POST',
+            url: '/yt_scroller/ajax/update/'+$(this).parents('p').data('vid')+'/',
+            data: {title: title}
+        });    
+        $(this).siblings('.close').click();
+    });    
     $('.v-list .controls .remove').click(function(){
         $('.vid-listing').click(function(){
             $.ajax({
                 type: 'DELETE',
-                url: '/yt_scroller/ajax/update/'+$(this).children('a').attr('href')+'/',
+                url: '/yt_scroller/ajax/update/'+$(this).parents('p').data('vid')+'/'
             });
             $(this).remove();
         });
