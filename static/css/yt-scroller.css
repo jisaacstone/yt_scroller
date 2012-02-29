@@ -137,6 +137,9 @@ html, body{
 .v-list .edbox input{
     width: 9em;
 }
+.v-list .overview{
+    padding: 3em 0 8em;
+}
 .controls{
     cursor: pointer;
     display: block;
@@ -188,6 +191,7 @@ p.addnew{
 .vid-listing a{
     text-decoration: none;
     color: rgba(28,58,128,0.7);
+    padding-left: 2em;
 }
 .vid-listing a:hover{
     color: rgba(28,58,128,1);

@@ -66,10 +66,12 @@ function stateChange(newState) {
    		var scrollDiv = null;
     	var curTime = 0;
 
+        var withyt = typeof ytplayer !== 'undefined';       
+
 		function initialize() {
-			ytPrep();
+			withyt && ytPrep();
 			oSelf.update();	
-			ytInit();
+			withyt && ytInit();
 			setEvents();
 			return oSelf;
 		}
@@ -109,7 +111,7 @@ function stateChange(newState) {
         function stop_scroll() {
             oContent.obj.stop(true);
             oThumb.obj.stop(true);
-            ytplayer.pauseVideo();
+            withyt && ytplayer.pauseVideo();
         };
 		function setSize(){
 			oThumb.obj.css(sDirection, iScroll / oScrollbar.ratio);

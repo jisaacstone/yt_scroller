@@ -6,11 +6,13 @@ def index(HttpRequest):
     return render_to_response('yt_scroller.html', {})
 
 def show(HttpRequest, vid_string):
+    if not vid_string:
+        return render_to_response('yt_index.html', {'vids': VidInfo.objects.all(), 'edit': True})
     vid = VidInfo.objects.filter(name=vid_string)
     if not vid:
         vid = VidInfo.objects.filter(vid_id=vid_string)
     if not vid:
-        return render_to_response('yt_index.html', {'vids': VidInfo.objects.all(), 'edit': True})
+        return render_to_response('yt_index.html', {'vids': VidInfo.objects.all(), 'edit': True, 'message': 'Not Found'})
     vid = vid[0]    
     timestops = vid.timestop_set.all()
     edit = True
