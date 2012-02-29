@@ -3,6 +3,8 @@ $(function(){
     $('.ts-edit').click(function(){
         if($(this).children('.edbox').is(':hidden')){
             $(this).children('.edbox').css('display','block');
+            $(this).siblings('.textcontent').hide()
+            $('<textarea class="tcinput">'+$(this).siblings('.textcontent').html()+'</textarea>').insertBefore(this);
         }
     });
     $('.v-scroll .addnew').click(function(){
@@ -13,41 +15,44 @@ $(function(){
             .parent().insertBefore('.overview p:last');
     });
     $('.v-scroll .controls .remove').click(function(){
-        $('.textcontent').click(function(){
+        $('.textcontent').parent().click(function(){
             $.ajax({
                 type: 'DELETE',
-                url: $(this).siblings('.ts-edit').data('url'),
+                url: $(this).children('.ts-edit').data('url'),
             });
-            $(this).parents('p').remove();
+            $(this).remove();
         });
         $('.messagebox').css('display', 'block');
         $('.messagebox .message').html('Click on Text to Remove');
         $('.messagebox .close').click(function(){
-            $('.textcontent').unbind('click');
+            $('.textcontent').parent().unbind('click');
             $('.messagebox').css('display', 'none');
         });
     });
     $('.v-scroll p .edbox .submit').click(function(e){
         e.stopPropagation();
         var time = $(this).siblings('input').val();
-        var html = $(this).parents('p').children('.textcontent').html();
+        var html = $(this).parents('p').children('.tcinput').val();
+        $(this).parents('p').children('.textcontent').html(html);
         $.ajax({
             type: 'POST',
             url: $(this).parents('.ts-edit').data('url'),
             data: {time: time, html: html}
         });    
         $(this).parents('p').children('.timestop').data('time', time);
+        $(this).siblings('.close').click();
     });    
     $('.edbox .close').click(function(e){
         e.stopPropagation();
         $(this).parents('.edbox').css('display','none');
+        $('.tcinput').remove();
+        $('.textcontent').show();
     });    
     $('.hover').css('visibility','hidden');
     $('.hover').parent().hover(function(){
         $(this).children('.hover').css('visibility', 'visible');
         }, function(){
-        $(this).children('.hover').css('visibility', 'hidden')
-            .children('.edbox').css('display', 'none');
+        $(this).children('.hover').css('visibility', 'hidden');
     });
     // video editing js
     $('.v-list .controls .remove').click(function(){
