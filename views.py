@@ -16,6 +16,7 @@ def show(HttpRequest, vid_string):
     edit = True
     return render_to_response('yt_vid.html', locals())
 
+@csrf_exempt
 def update(HttpRequest, vid_id, timestop_id):
     if timestop_id != '0':
         ts = get_object_or_404(Timestop, pk=timestop_id, vid=vid_id)
@@ -37,6 +38,7 @@ def update(HttpRequest, vid_id, timestop_id):
         ts.delete()
         return HttpResponse(status='204')
 
+@csrf_exempt
 def update_vid(HttpRequest, vid_id):
     method = HttpRequest.META['REQUEST_METHOD']
     if method == 'POST':
