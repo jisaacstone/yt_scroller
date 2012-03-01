@@ -34,7 +34,7 @@
 		<div class="overview">
           {% for vid in vids %}
           <p class="vid-listing" data-vid="{{ vid.id }}">
-            <a class="textcontent" href="{{ vid.vid_id }}">{{ vid.name }}</a>
+            <a class="textcontent" href="/yt_scroller/vid/{{ vid.vid_id }}">{{ vid.name }}</a>
             {% if edit %}
             <span class="hover ts-edit" data-url="/yt_scroller/ajax/update_time/{{ vid.id }}/{{ timestop.id }}/">&#x2714;
               <span class="edbox">
